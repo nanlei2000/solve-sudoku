@@ -62,7 +62,6 @@ function SudokuSolver() {
    * Start solving the game for provided puzzle and options.
    */
   this.solve = function(puzzle, options) {
-    console.time('solved in')
     options = options || {}
     var result = options.result || 'string'
     puzzle_table = puzzle.split('').map(function(v) {
@@ -91,9 +90,9 @@ if (typeof exports !== 'undefined') {
 
 const sudo = new SudokuSolver()
 process.stdin.on('data', data => {
+  console.time('solved in')
   console.log(sudo.solve(data.toString().trim()))
   console.log(`tried ${sudo.count} times`)
   console.timeEnd('solved in')
   process.exit(1)
 })
-
